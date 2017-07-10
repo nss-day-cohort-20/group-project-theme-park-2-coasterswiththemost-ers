@@ -3,3 +3,11 @@ lib/node_modules
 lib/node_modules/
 node_modules/
 node_modules
+dist/
+dist
+.sass-cache
+.sass-cache/
+lib/.sass-cache
+lib/.sass-cache/
+css/
+css
