@@ -1,12 +1,74 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
 	<head>
-		<title>Coaster with the Most-ers</title>
+		<title>Coasters with the Most-ers</title>
 		<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	</head>
-	<body>
-	<h1>Theme Park</h1>
 
-	<script src="dist/app.js"></script>
+		<body>
+			<!-- navbar -->
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			    	<div class="row">
+				      <a class="navbar-brand col-sm-2" href="#">
+				        <img alt="Brand" src="./images/coaster-logo_512.png">
+				      </a>
+				      <form class="navbar-form navbar-left col-sm-6" role="search">
+							  <div class="form-group">
+							    <input type="text" class="form-control" placeholder="Search Attractions">
+									<input type="checkbox" name="typeSearchCheckbox" id=typeSearchCheckbox"">
+									<label for="typeSearchCheckbox">by Type</label>
+								  <button type="submit" class="btn btn-default">Search</button>
+							  </div>
+							</form>
+							<div class="navbar-left col-sm-3">
+							</div>
+						</div>
+			    </div>
+			  </div>
+			</nav>
+			<!-- page -->
+			<div class="container-fluid">
+				<div class="row">
+					<!-- list (left sidebar) -->
+					<div id="listDiv" class="col-sm-4">
+						<ul id="attractionList">
+							<h3>Attractions</h3>
+							<li>Example List</li>
+							<li>Example List</li>
+							<li>Example List</li>
+						</ul>
+					</div>
+					<!-- map/grid -->
+					<div id="mapDiv" class="col-sm-8">
+						<div class="container-fluid">
+							<div class="row">
+								<div id="grid1" class="col-sm-4 mapGridBox"><h4>1</h4></div>
+								<div id="grid2" class="col-sm-4 mapGridBox"><h4>2</h4></div>
+								<div id="grid3" class="col-sm-4 mapGridBox"><h4>3</h4></div>
+								<div id="grid4" class="col-sm-4 mapGridBox"><h4>4</h4></div>
+								<div id="grid5" class="col-sm-4 mapGridBox"><h4>5</h4></div>
+								<div id="grid6" class="col-sm-4 mapGridBox"><h4>6</h4></div>
+								<div id="grid7" class="col-sm-4 mapGridBox"><h4>7</h4></div>
+								<div id="grid8" class="col-sm-4 mapGridBox"><h4>8</h4></div>
+								<div id="grid9" class="col-sm-4 mapGridBox"><h4>9</h4></div>
+							</div>
+						</div>
+					</div>
+			</div> <!-- row -->
+		</div> <!-- page - container-fluid -->
+
+		<footer class="container-fluid">
+			<div class="row">
+				<p class="col-sm-4">&copy; 2017 CwtM, LLC</p>
+			</div>
+		</footer>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="./dist/app.js"></script>
 	</body>
 </html>
