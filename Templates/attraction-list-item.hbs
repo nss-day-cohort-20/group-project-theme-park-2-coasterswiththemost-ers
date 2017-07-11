@@ -1,0 +1,12 @@
+<li>
+{{#each attraction}}
+	<h3>{{name}}({{type.name}})</h3>
+	<div class="hidden">
+		<p>{{attraction.description}}</p>
+		<p>Hours: </p>
+		{{#each attraction.times}}
+			{{this}}
+		{{/each}}
+	</div>
+{{/each}}
+</li>
