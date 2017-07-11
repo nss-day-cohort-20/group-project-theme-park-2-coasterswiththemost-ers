@@ -10,7 +10,7 @@ dataFactory.getAllAttractions = function() {
       url: "https://themepark-a3934.firebaseio.com/attractions.json"
     })
     .done(function(data) {
-    	console.log('attractions', data);
+    	// console.log('attractions', data);
       resolve(data);
     })
     .fail(reject);
@@ -23,7 +23,7 @@ dataFactory.getAllAreas = function() {
       url: "https://themepark-a3934.firebaseio.com/areas.json"
     })
     .done(function(data) {
-    	console.log('areas', data);
+    	// console.log('areas', data);
       resolve(data);
     })
     .fail(reject);
@@ -36,7 +36,7 @@ dataFactory.getAllAttractionTypes = function() {
       url: "https://themepark-a3934.firebaseio.com/attraction_types.json"
     })
     .done(function(data) {
-    	console.log('attraction types', data);
+    	// console.log('attraction types', data);
       resolve(data);
     })
     .fail(reject);

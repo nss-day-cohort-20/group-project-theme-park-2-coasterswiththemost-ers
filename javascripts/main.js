@@ -2,11 +2,26 @@
 
 console.log('hello');
 
-let data = require('./data-factory');
+let app = Object.create(null);
 
-let attractionsData = data.getAllAttractions();
-let areasData = data.getAllAreas();
-let attractionTypesData = data.getAllAttractionTypes();
-// console.log(attractionsData);
-// console.log(areasData);
-// console.log(attractionTypesData);
+let attractions = [];
+let areas = [];
+let attractionTypes = [];
+let attractionsList = [];
+
+let data = require('./data-factory');
+let attractionsListBuilder = require('./attractions-list-data-builder');
+
+attractionsListBuilder();
+
+// data.getAllAttractions()
+// 	.then(function(dataFromGetAllAttractions){
+// 		// console.log('data from getAllAttractions', dataFromGetAllAttractions);
+// 		attractions = dataFromGetAllAttractions;
+// 	});
+
+app.getAttractionsList = function(){
+	return attractionsList;
+};
+
+window.app = app;
