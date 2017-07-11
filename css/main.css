@@ -1,3 +1,7 @@
+nav img {
+  max-height: 100%; }
 
+.container-fluid {
+  border: 1px solid lightgrey; }
 
 /*# sourceMappingURL=main.css.map */
