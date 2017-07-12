@@ -21,18 +21,7 @@ let templates = require('./templates');
 getAttractionsList().then(function(dataFromGetAttractionsList){
 	attractionsList = dataFromGetAttractionsList;
 	$('#attractionList').append(templates.testTemplate({list : attractionsList}));
-	
-	$('#attractionList li').on('click', function()
-	{
-	$('#attractionList li div').each( function()
-	{
-		this.classList.add('isHidden');
-	});
-	let childCount = document.getElementById('attractionList').childElementCount;
-
-	console.log(this);
-	this.lastElementChild.classList.toggle('isHidden');
-	});
+	nameClick();
 });
 
 getAreaList().then(function(dataFromGetAreaList) {
@@ -45,6 +34,20 @@ getParkInfo().then(function(dataFromGetParkInfo) {
 	$('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
 });
 
+function nameClick()
+{
+	$('#attractionList li').on('click', function()
+	{
+	$('#attractionList li div').each( function()
+	{
+		this.classList.add('isHidden');
+	});
+	let childCount = document.getElementById('attractionList').childElementCount;
+
+	console.log(this);
+	this.lastElementChild.classList.toggle('isHidden');
+	});
+}
 app.listGetter = function(){
 	return attractionsList;
 };
@@ -72,6 +75,7 @@ searchForm.addEventListener('submit', function(){
 		//below empties sidebar and fills with only matching attractions with the matched name
 		$('#attractionList').empty();
 		$('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
+		nameClick();
 });
 
 
