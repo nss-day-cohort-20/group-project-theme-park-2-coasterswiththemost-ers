@@ -43,30 +43,42 @@ app.listGetter = function(){
 	return attractionsList;
 };
 
-searchForm.addEventListener('submit', function(){
-	getArray.attractionsList().then( function(attractionsList) {
-		let searchedAttractions = attractionsList.filter(function(attraction){
-			// console.log(attraction);
-			function stringContains(){
+searchForm.addEventListener('submit', function() {
+	getArray.attractionsList().then( function(attractionsArr) {
+		getArray.areas().then( function(areasArr) {
+		// console.log(attractionsList);
+		let searchedAttractions = attractionsList.filter(function(attraction) {
+			function stringContains() {
+				// console.log(attraction);
 				if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
 					return false;
 				} else {
-					let currentArea = areas.filter(function(area){
-						return attraction.area === area.name;
-					})[0];
-					let divIDselector = '#' + 'grid' + currentArea.id;
-					$(divIDselector).addClass('highlightedArea');
-					return true;
-				}
+						// console.log(areasArr);
+						let currentArea = areasArr.filter(function(area) {
+							// console.log('attraction.area', attraction.area);
+							// console.log('area.name', area.name);
+							return attraction.area === area.name;
+						})[0];
+						console.log("here");
+						// console.log('currentArea', currentArea);
+						let divIDselector = '#' + 'grid' + currentArea.id;
+						$(divIDselector).addClass('highlightedArea');
+
+
+						return true;
+					});
+					}
 			}
 			return stringContains();
 		});
-		// console.log('searchedAttractions', searchedAttractions);
-
+						console.log("searchedAttractions", searchedAttractions);
+						// $('#attractionList').empty();
+						$('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
 		//below empties sidebar and fills with only matching attractions with the matched name
-		$('#attractionList').empty();
-		$('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
-});
+		// $('#attractionList').empty();
+		// // console.log("data for template", searchedAttractions);
+		// $('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
+	});
 });
 
 window.app = app;

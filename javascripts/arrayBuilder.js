@@ -9,10 +9,12 @@ let dataFactory = require('./data-Factory');
 
 let getArray= {};
 
-function buildAttractionsList() {
+
+
+function buildAttractionsList () {
 	// console.log("logging from buildAttractionsList()", attractions, areas, attractionTypes);
-	attractionsList = attractions.map(function(attraction){
-		let areaItem = areas.filter(function(area){
+	attractionsList = attractions.map(function(attraction) {
+		let areaItem = areas.filter(function(area) {
 			return area.id === attraction.area_id;
 		})[0];
 
