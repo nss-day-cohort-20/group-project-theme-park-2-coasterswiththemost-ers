@@ -6,6 +6,7 @@ let areas = [];
 let attractionsList = [];
 
 let textInput = document.getElementById('text-input');
+let searchForm = document.getElementById('search-form');
 
 let app = Object.create(null);
 let $ = require('jquery');
@@ -28,8 +29,7 @@ app.listGetter = function(){
 	return attractionsList;
 };
 
-textInput.addEventListener('keyup', function(){
-	if (event.key === 'Enter') {
+searchForm.addEventListener('submit', function(){
 		let searchedAttractions = attractionsList.filter(function(attraction){
 			// console.log(attraction);
 			function stringContains(){
@@ -52,7 +52,6 @@ textInput.addEventListener('keyup', function(){
 		//below empties sidebar and fills with only matching attractions with the matched name
 		$('#attractionList').empty();
 		$('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
-	}
 });
 
 window.app = app;
