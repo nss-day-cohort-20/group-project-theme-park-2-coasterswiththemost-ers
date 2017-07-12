@@ -36,12 +36,20 @@ textInput.addEventListener('keyup', function(){
 				if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
 					return false;
 				} else {
+					let currentArea = areas.filter(function(area){
+						return attraction.area === area.name;
+					})[0];
+					console.log(currentArea);
+					let divIDselector = '#' + 'grid' + currentArea.id;
+					$(divIDselector).addClass('highlightedArea');
 					return true;
 				}
 			}
 			return stringContains();
 		});
 		// console.log('searchedAttractions', searchedAttractions);
+
+		//below empties sidebar and fills with only matching attractions with the matched name
 		$('#attractionList').empty();
 		$('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
 	}
