@@ -10,7 +10,7 @@ let domLoader = {};
 domLoader.attractionsList = function() {
 getArray.attractionsList().then(function(dataFromGetAttractionsList){
     $('#attractionList').append(templates.testTemplate({list : dataFromGetAttractionsList}));
-		// userInteraction.nameClick();
+		userInteraction.nameClick();
 });
 };
 
@@ -27,7 +27,7 @@ getArray.areas().then(function(dataFromGetAreaList) {
 });
 };
 
-domLoader.attractionsList = function() {
+domLoader.parkInfo = function() {
 getArray.parkInfo().then(function(dataFromGetParkInfo) {
     $('#footerDiv').prepend( templates.parkInfo(dataFromGetParkInfo[0]) );
 });
