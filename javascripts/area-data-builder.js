@@ -8,7 +8,6 @@ function buildAreaList() {
 		dataFactory.getAllAreas()
 			.then(function(dataFromGetAllAreas){
 				areaList = dataFromGetAllAreas;
-				console.log('getAllareas areaList', areaList);
 				resolve(dataFromGetAllAreas);
 			})
 			.catch(function(err){
