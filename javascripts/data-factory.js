@@ -31,12 +31,24 @@ dataFactory.getAllAreas = function() {
 };
 
 dataFactory.getAllAttractionTypes = function() {
-	return new Promise( function(resolve, reject){
+  return new Promise( function(resolve, reject){
     $.ajax({
       url: "https://themepark-a3934.firebaseio.com/attraction_types.json"
     })
     .done(function(data) {
-    	// console.log('attraction types', data);
+      // console.log('attraction types', data);
+      resolve(data);
+    })
+    .fail(reject);
+  });
+};
+
+dataFactory.getParkInfo = function() {
+	return new Promise( function(resolve, reject){
+    $.ajax({
+      url: "https://themepark-a3934.firebaseio.com/park-info.json"
+    })
+    .done(function(data) {
       resolve(data);
     })
     .fail(reject);

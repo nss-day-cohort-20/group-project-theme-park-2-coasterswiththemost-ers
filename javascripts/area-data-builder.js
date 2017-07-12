@@ -7,8 +7,14 @@ function buildAreaList() {
 	return new Promise(function(resolve, reject){
 		dataFactory.getAllAreas()
 			.then(function(dataFromGetAllAreas){
+				let blankGridSpace = {
+					colorTheme: "",
+					decription: "",
+					id: "",
+					name: ""
+				};
+				dataFromGetAllAreas.splice(4, 0, blankGridSpace);
 				areaList = dataFromGetAllAreas;
-				console.log('getAllareas areaList', areaList);
 				resolve(dataFromGetAllAreas);
 			})
 			.catch(function(err){

@@ -1,7 +1,35 @@
+@import 'variables';
+
 nav img {
 	max-height: 100%;
 }
 
 .container-fluid {
 	border: 1px solid lightgrey;
+}
+
+.isHidden {
+	display: none;
+}
+
+#grid1 {
+	background-color: $grid1;
+}
+#grid2 {
+	background-color: $grid2;
+}
+#grid3 {
+	background-color: $grid3;
+}
+#grid4 {
+	background-color: $grid4;
+}
+#grid5 {
+	background-color: $grid5;
+}
+#grid6 {
+	background-color: $grid6;
+}
+#grid7 {
+	background-color: $grid7;
 }
