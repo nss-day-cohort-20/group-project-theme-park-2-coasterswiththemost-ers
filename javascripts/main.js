@@ -15,11 +15,24 @@ let data = require('./data-factory');
 let getAttractionsList = require('./attractions-list-data-builder');
 let getAreaList = require('./area-data-builder.js');
 let getParkInfo = require('./park-info-builder.js');
+let nameClickListener = require('./name-click-listener');
 let templates = require('./templates');
 
 getAttractionsList().then(function(dataFromGetAttractionsList){
 	attractionsList = dataFromGetAttractionsList;
 	$('#attractionList').append(templates.testTemplate({list : attractionsList}));
+	
+	$('#attractionList li').on('click', function()
+	{
+	$('#attractionList li div').each( function()
+	{
+		this.classList.add('isHidden');
+	});
+	let childCount = document.getElementById('attractionList').childElementCount;
+
+	console.log(this);
+	this.lastElementChild.classList.toggle('isHidden');
+	});
 });
 
 getAreaList().then(function(dataFromGetAreaList) {
@@ -60,5 +73,7 @@ searchForm.addEventListener('submit', function(){
 		$('#attractionList').empty();
 		$('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
 });
+
+
 
 window.app = app;
