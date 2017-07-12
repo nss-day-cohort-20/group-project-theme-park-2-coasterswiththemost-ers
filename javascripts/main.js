@@ -1,11 +1,5 @@
 'use strict';
 
-let attractions = [];
-let areas = [];
-let attractionTypes = [];
-let attractionsList = [];
-let parkInfo = [];
-
 let textInput = document.getElementById('text-input');
 let searchForm = document.getElementById('search-form');
 
@@ -17,43 +11,23 @@ let getArray = require('./arrayBuilder');
 let templates = require('./templates');
 let domLoader = require('./loadDOM');
 
-getArray.attractionsList().then(function(dataFromGetAttractionsList){
-    attractionsList = dataFromGetAttractionsList;
-    $('#attractionList').append(templates.testTemplate({list : attractionsList}));
-		userInteraction.nameClick();
-});
+domLoader.attractionsList();
 
-getArray.areas().then(function(dataFromGetAreaList) {
-    // areas = dataFromGetAreaList;
-    let blankGridSpace = {
-        colorTheme: "",
-        decription: "",
-        id: "",
-        name: ""
-    };
-    dataFromGetAreaList.splice(4, 0, blankGridSpace);
-    $('#mapGrid').append( templates.gridTemplate({area: dataFromGetAreaList}) );
-});
+domLoader.areaList();
 
-getArray.parkInfo().then(function(dataFromGetParkInfo) {
-    parkInfo = dataFromGetParkInfo;
-    $('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
-});
+domLoader.parkInfo();
 
-
-app.listGetter = function(){
-    return attractionsList;
-};
-
+//this needs to be declared for search!!!
+let attractions = [];
 searchForm.addEventListener('submit', function(){
     getArray.attractionsList().then( function(dataFromGetAttractionsList) {
-        let attractionsList = dataFromGetAttractionsList;
+        attractions = dataFromGetAttractionsList;
         return getArray.areas();
     })
     .then(function(dataFromGetAreas){
         let areas = dataFromGetAreas;
         // console.log("attractionsList", attractionsList, "areas", areas);
-        let searchedAttractions = attractionsList.filter(function(attraction){
+        let searchedAttractions = attractions.filter(function(attraction){
             // console.log(attraction);
             function stringContains(){
                 if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
