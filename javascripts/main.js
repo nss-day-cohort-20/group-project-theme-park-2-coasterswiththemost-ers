@@ -12,32 +12,32 @@ let searchForm = document.getElementById('search-form');
 let app = Object.create(null);
 let $ = require('jquery');
 let data = require('./data-factory');
-
+let domLoader = require('./loadDOM');
 let getArray = require('./arrayBuilder');
 let templates = require('./templates');
 
-getArray.attractionsList().then(function(dataFromGetAttractionsList){
-    attractionsList = dataFromGetAttractionsList;
-    $('#attractionList').append(templates.testTemplate({list : attractionsList}));
-		nameClick();
-});
+domLoader.attractionsList();
 
-getArray.areas().then(function(dataFromGetAreaList) {
-    // areas = dataFromGetAreaList;
-    let blankGridSpace = {
-        colorTheme: "",
-        decription: "",
-        id: "",
-        name: ""
-    };
-    dataFromGetAreaList.splice(4, 0, blankGridSpace);
-    $('#mapGrid').append( templates.gridTemplate({area: dataFromGetAreaList}) );
-});
+domLoader.areaList();
 
-getArray.parkInfo().then(function(dataFromGetParkInfo) {
-    parkInfo = dataFromGetParkInfo;
-    $('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
-});
+domLoader.attractionsList();
+
+// getArray.areas().then(function(dataFromGetAreaList) {
+//     // areas = dataFromGetAreaList;
+//     let blankGridSpace = {
+//         colorTheme: "",
+//         decription: "",
+//         id: "",
+//         name: ""
+//     };
+//     dataFromGetAreaList.splice(4, 0, blankGridSpace);
+//     $('#mapGrid').append( templates.gridTemplate({area: dataFromGetAreaList}) );
+// });
+
+// getArray.parkInfo().then(function(dataFromGetParkInfo) {
+//     parkInfo = dataFromGetParkInfo;
+//     $('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
+// });
 
 function nameClick()
 {
