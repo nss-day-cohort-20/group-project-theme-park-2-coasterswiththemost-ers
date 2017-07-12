@@ -4,6 +4,7 @@
 let areas = [];
 // let attractionTypes = [];
 let attractionsList = [];
+let parkInfo = [];
 
 let textInput = document.getElementById('text-input');
 let searchForm = document.getElementById('search-form');
@@ -13,6 +14,7 @@ let $ = require('jquery');
 let data = require('./data-factory');
 let getAttractionsList = require('./attractions-list-data-builder');
 let getAreaList = require('./area-data-builder.js');
+let getParkInfo = require('./park-info-builder.js');
 let templates = require('./templates');
 
 getAttractionsList().then(function(dataFromGetAttractionsList){
@@ -23,6 +25,11 @@ getAttractionsList().then(function(dataFromGetAttractionsList){
 getAreaList().then(function(dataFromGetAreaList) {
 	areas = dataFromGetAreaList;
 	$('#mapGrid').append( templates.gridTemplate({area: areas}) );
+});
+
+getParkInfo().then(function(dataFromGetParkInfo) {
+	parkInfo = dataFromGetParkInfo;
+	$('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
 });
 
 app.listGetter = function(){

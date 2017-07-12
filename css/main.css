@@ -7,4 +7,28 @@ nav img {
 .highlightedArea {
   border: 3px solid red; }
 
+.isHidden {
+  display: none; }
+
+#grid1 {
+  background-color: #730217; }
+
+#grid2 {
+  background-color: #D15530; }
+
+#grid3 {
+  background-color: #A37849; }
+
+#grid4 {
+  background-color: #2594D9; }
+
+#grid5 {
+  background-color: #E73C81; }
+
+#grid6 {
+  background-color: #3E4D8C; }
+
+#grid7 {
+  background-color: #F2CF53; }
+
 /*# sourceMappingURL=main.css.map */
