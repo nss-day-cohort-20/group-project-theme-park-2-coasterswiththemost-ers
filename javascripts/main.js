@@ -12,14 +12,14 @@ let searchForm = document.getElementById('search-form');
 let app = Object.create(null);
 let $ = require('jquery');
 let data = require('./data-factory');
-
+let userInteraction = require('./userInteractionDOM');
 let getArray = require('./arrayBuilder');
 let templates = require('./templates');
 
 getArray.attractionsList().then(function(dataFromGetAttractionsList){
     attractionsList = dataFromGetAttractionsList;
     $('#attractionList').append(templates.testTemplate({list : attractionsList}));
-		nameClick();
+		userInteraction.nameClick();
 });
 
 getArray.areas().then(function(dataFromGetAreaList) {
@@ -39,20 +39,7 @@ getArray.parkInfo().then(function(dataFromGetParkInfo) {
     $('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
 });
 
-function nameClick()
-{
-	$('#attractionList li').on('click', function()
-	{
-	$('#attractionList li div').each( function()
-	{
-		this.classList.add('isHidden');
-	});
-	let childCount = document.getElementById('attractionList').childElementCount;
 
-	console.log(this);
-	this.lastElementChild.classList.toggle('isHidden');
-	});
-}
 app.listGetter = function(){
     return attractionsList;
 };
@@ -85,7 +72,7 @@ searchForm.addEventListener('submit', function(){
         //below empties sidebar and fills with only matching attractions with the matched name
         $('#attractionList').empty();
         $('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
-				nameClick();
+				userInteraction.nameClick();
     })
     .catch(function(err){
         console.log('Oops, there was an error', err.statusText);
