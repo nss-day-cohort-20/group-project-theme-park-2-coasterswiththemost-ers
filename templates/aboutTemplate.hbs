@@ -1,4 +1,6 @@
 <h3>{{name}}</h3>
 <p>{{description}}</p>
 <p>{{location}}</p>
-<p>Operating hours: {{operating_hours}} - {{operating_hours}}</p>
+{{#each operating_hours}}
+<p>Operating hours: {{this.opening}} - {{this.closing}}</p>
+{{/each }}
