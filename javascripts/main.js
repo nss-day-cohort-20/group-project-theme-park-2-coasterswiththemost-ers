@@ -15,6 +15,7 @@ let data = require('./data-factory');
 let userInteraction = require('./userInteractionDOM');
 let getArray = require('./arrayBuilder');
 let templates = require('./templates');
+let domLoader = require('./loadDOM');
 
 getArray.attractionsList().then(function(dataFromGetAttractionsList){
     attractionsList = dataFromGetAttractionsList;
