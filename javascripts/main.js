@@ -1,8 +1,8 @@
 'use strict';
 
-// let attractions = [];
+let attractions = [];
 let areas = [];
-// let attractionTypes = [];
+let attractionTypes = [];
 let attractionsList = [];
 let parkInfo = [];
 
@@ -12,26 +12,31 @@ let searchForm = document.getElementById('search-form');
 let app = Object.create(null);
 let $ = require('jquery');
 let data = require('./data-factory');
-let getAttractionsList = require('./attractions-list-data-builder');
-let getAreaList = require('./area-data-builder.js');
-let getParkInfo = require('./park-info-builder.js');
-let nameClickListener = require('./name-click-listener');
+
+let getArray = require('./arrayBuilder');
 let templates = require('./templates');
 
-getAttractionsList().then(function(dataFromGetAttractionsList){
-	attractionsList = dataFromGetAttractionsList;
-	$('#attractionList').append(templates.testTemplate({list : attractionsList}));
-	nameClick();
+getArray.attractionsList().then(function(dataFromGetAttractionsList){
+    attractionsList = dataFromGetAttractionsList;
+    $('#attractionList').append(templates.testTemplate({list : attractionsList}));
+		nameClick();
 });
 
-getAreaList().then(function(dataFromGetAreaList) {
-	areas = dataFromGetAreaList;
-	$('#mapGrid').append( templates.gridTemplate({area: areas}) );
+getArray.areas().then(function(dataFromGetAreaList) {
+    // areas = dataFromGetAreaList;
+    let blankGridSpace = {
+        colorTheme: "",
+        decription: "",
+        id: "",
+        name: ""
+    };
+    dataFromGetAreaList.splice(4, 0, blankGridSpace);
+    $('#mapGrid').append( templates.gridTemplate({area: dataFromGetAreaList}) );
 });
 
-getParkInfo().then(function(dataFromGetParkInfo) {
-	parkInfo = dataFromGetParkInfo;
-	$('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
+getArray.parkInfo().then(function(dataFromGetParkInfo) {
+    parkInfo = dataFromGetParkInfo;
+    $('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
 });
 
 function nameClick()
@@ -49,33 +54,42 @@ function nameClick()
 	});
 }
 app.listGetter = function(){
-	return attractionsList;
+    return attractionsList;
 };
 
 searchForm.addEventListener('submit', function(){
-		let searchedAttractions = attractionsList.filter(function(attraction){
-			// console.log(attraction);
-			function stringContains(){
-				if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
-					return false;
-				} else {
-					let currentArea = areas.filter(function(area){
-						return attraction.area === area.name;
-					})[0];
-					console.log(currentArea);
-					let divIDselector = '#' + 'grid' + currentArea.id;
-					$(divIDselector).addClass('highlightedArea');
-					return true;
-				}
-			}
-			return stringContains();
-		});
-		// console.log('searchedAttractions', searchedAttractions);
-
-		//below empties sidebar and fills with only matching attractions with the matched name
-		$('#attractionList').empty();
-		$('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
-		nameClick();
+    getArray.attractionsList().then( function(dataFromGetAttractionsList) {
+        let attractionsList = dataFromGetAttractionsList;
+        return getArray.areas();
+    })
+    .then(function(dataFromGetAreas){
+        let areas = dataFromGetAreas;
+        // console.log("attractionsList", attractionsList, "areas", areas);
+        let searchedAttractions = attractionsList.filter(function(attraction){
+            // console.log(attraction);
+            function stringContains(){
+                if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
+                    return false;
+                } else {
+                    let currentArea = areas.filter(function(area){
+                        return attraction.area === area.name;
+                    })[0];
+                    let divIDselector = '#' + 'grid' + currentArea.id;
+                    $(divIDselector).addClass('highlightedArea');
+                    return true;
+                }
+            }
+            return stringContains();
+        });
+        // console.log('searchedAttractions', searchedAttractions);
+        //below empties sidebar and fills with only matching attractions with the matched name
+        $('#attractionList').empty();
+        $('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
+				nameClick();
+    })
+    .catch(function(err){
+        console.log('Oops, there was an error', err.statusText);
+    });
 });
 
 
