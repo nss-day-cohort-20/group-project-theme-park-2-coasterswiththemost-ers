@@ -4,6 +4,9 @@ nav img {
 .container-fluid {
   border: 1px solid lightgrey; }
 
+.highlightedArea {
+  border: 3px solid red; }
+
 .isHidden {
   display: none; }
 
