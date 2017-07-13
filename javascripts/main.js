@@ -90,7 +90,7 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
         });
         $('#attractionList').empty();
         $('#attractionList').append(templates.testTemplate({list : areaAttractions}));
-        nameClick();
+        userInteraction.nameClick();
     });
 });
 
