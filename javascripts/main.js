@@ -27,8 +27,8 @@ getArray.attractionsList().then(function(dataFromGetAttractionsList){
 });
 
 domLoader.areaList();
-domLoader.parkInfo();
 
+domLoader.parkInfo();
 
 app.listGetter = function(){
     return attractionsList;
@@ -58,8 +58,12 @@ searchForm.addEventListener('submit', function(){
 	          }
 	          return stringContains();
 	      });
+            let userInputTime = document.getElementById('time').value;
+            // let filteredList =  attractionList.filter( function(list)
+            // {
+            //     // if(userInputTime === list.times.)
+            // });
 		    // console.log('searchedAttractions', searchedAttractions);
-
 		    //below empties sidebar and fills with only matching attractions with the matched name
 		    $('#attractionList').empty();
 		    $('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
