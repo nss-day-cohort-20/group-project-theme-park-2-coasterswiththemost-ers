@@ -92,14 +92,18 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
 
 function draw() {
 var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
+var context = canvas.getContext('2d');
 var img = new Image();   // Create new img element
 img.addEventListener('load', function() {
-ctx.drawImage(img, 10, 50, 15, 15);
+context.drawImage(img, 10, 50, 15, 15);
 }, false);
 img.src = '../images/map_pin_30px.png';
 }
 
 draw();
+
+//this should clear the canvas when needed:
+//perhaps clear when user clicks the canvas - indicates they want to select area
+//context.clearRect(0, 0, canvas.width, canvas.height);
 
 window.app = app;

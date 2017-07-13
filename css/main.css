@@ -10,11 +10,16 @@ nav img {
 #canvas {
   width: 100%;
   height: 100%;
-  position: relative; }
+  position: absolute;
+  z-index: 1;
+  pointer-events: none; }
+
+.mapGrid {
+  position: relative;
+  z-index: 0; }
 
 .mapGridBox {
-  border: 2px solid transparent;
-  position: relative; }
+  border: 2px solid transparent; }
 
 .highlightedArea {
   border: 2px solid red; }
