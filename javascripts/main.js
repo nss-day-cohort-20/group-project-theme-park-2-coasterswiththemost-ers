@@ -92,6 +92,19 @@ searchForm.addEventListener('submit', function(){
     });
 });
 
-
+$('#mapGrid').on('click', '.mapGridBox', function(){
+    $(this).siblings().removeClass('highlightedArea');
+    $(this).addClass('highlightedArea');
+    let spanContents = $(this).children('span').contents();
+    // spanContents[0].data is the name of the area clicked
+    getArray.attractionsList().then(function(dataFromGetAttractionsList){
+        let areaAttractions = dataFromGetAttractionsList.filter(function(attraction){
+            return attraction.area === spanContents[0].data;
+        });
+        $('#attractionList').empty();
+        $('#attractionList').append(templates.testTemplate({list : areaAttractions}));
+        nameClick();
+    });
+});
 
 window.app = app;
