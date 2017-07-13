@@ -7,6 +7,9 @@ nav img {
 .isHidden {
   display: none; }
 
+ul {
+  list-style-type: decimal; }
+
 #canvas {
   width: 100%;
   height: 100%;
