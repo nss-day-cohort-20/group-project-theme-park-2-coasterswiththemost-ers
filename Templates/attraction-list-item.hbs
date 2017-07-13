@@ -3,10 +3,14 @@
 	<h3><a href ="#">{{name}}</a>({{type}})</h3>
 	<div class="isHidden">
 		<p>{{description}}</p>
+		{{#if times}}
 		<p>Hours: </p>
-		{{#each times}}
-			{{this}}
-		{{/each}}
+			{{#each times}}
+				{{this}}
+			{{/each}}
+		{{else}}
+			<p>Hours not available</p>
+		{{/if}}
 	</div>
 </li>
 {{/each}}
