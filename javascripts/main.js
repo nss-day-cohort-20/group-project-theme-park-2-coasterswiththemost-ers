@@ -93,13 +93,8 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
 function draw() {
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-  context.font = '20px sans-serif';
-  context.fillText('1', 10, 50);
-// var img = new Image();   // Create new img element
-// img.addEventListener('load', function() {
-// context.drawImage(img, 10, 50, 15, 15);
-// }, false);
-// img.src = '../images/map_pin_30px.png';
+  context.font = '48px, sans-serif';
+  context.fillText('1', 10, 50, 10%, 10%);
 }
 
 draw();

@@ -15,6 +15,13 @@ nav img {
 ul {
 	list-style-type: decimal;
 }
+#mapDiv {
+		min-height: 50vh;
+}
+
+.mapContainer {
+	min-height: 100%;
+}
 
 #canvas {
 	width:100%;
@@ -31,6 +38,7 @@ ul {
 
 .mapGridBox {
 	border: 2px solid transparent;
+	height: 200px;
 }
 
 .highlightedArea {
