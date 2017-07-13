@@ -94,7 +94,7 @@ function draw() {
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
   context.font = '48px, sans-serif';
-  context.fillText('1', 10, 50, 10%, 10%);
+  context.fillText('1', 10, 50, 10, 10);
 }
 
 draw();
