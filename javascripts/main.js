@@ -89,4 +89,17 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
     });
 });
 
+
+function draw() {
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var img = new Image();   // Create new img element
+img.addEventListener('load', function() {
+ctx.drawImage(img, 10, 50, 15, 15);
+}, false);
+img.src = '../images/map_pin_30px.png';
+}
+
+draw();
+
 window.app = app;

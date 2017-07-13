@@ -12,8 +12,18 @@ nav img {
 	display: none;
 }
 
+#canvas {
+	width:100%;
+	height:100%;
+	// position: absolute;
+	position: relative;
+}
+
 .mapGridBox {
 	border: 2px solid transparent;
+	position: relative;
+	// position: absolute;
+
 }
 
 .highlightedArea {

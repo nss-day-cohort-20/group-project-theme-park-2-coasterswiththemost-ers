@@ -7,8 +7,14 @@ nav img {
 .isHidden {
   display: none; }
 
+#canvas {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
 .mapGridBox {
-  border: 2px solid transparent; }
+  border: 2px solid transparent;
+  position: relative; }
 
 .highlightedArea {
   border: 2px solid red; }
