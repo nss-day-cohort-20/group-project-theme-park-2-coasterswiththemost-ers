@@ -124,5 +124,17 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
     });
 });
 
+function draw() {
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+  context.font = '48px, sans-serif';
+  context.fillText('1', 10, 50, 10, 10);
+}
+
+draw();
+
+//this should clear the canvas when needed:
+//perhaps clear when user clicks the canvas - indicates they want to select area
+//context.clearRect(0, 0, canvas.width, canvas.height);
 
 window.app = app;
