@@ -8,10 +8,11 @@ nav img {
   display: none; }
 
 .mapGridBox {
-  border: 2px solid transparent; }
+  border: 5px solid transparent;
+  color: white; }
 
 .highlightedArea {
-  border: 2px solid red; }
+  border: 5px inset lightgrey; }
 
 #grid1 {
   background-color: #730217; }
