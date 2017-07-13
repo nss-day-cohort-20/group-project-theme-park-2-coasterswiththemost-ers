@@ -22,6 +22,7 @@
     "handlebars": "^4.0.10",
     "hbsfy": "^2.7.0",
     "jquery": "^3.2.1",
-    "matchdep": "^1.0.1"
+    "matchdep": "^1.0.1",
+    "moment": "^2.18.1"
   }
 }
