@@ -8,14 +8,17 @@ nav img {
 	border: 1px solid lightgrey;
 }
 
-.highlightedArea {
-	border: 3px solid red;
-}
-
 .isHidden {
 	display: none;
 }
 
+.mapGridBox {
+	border: 2px solid transparent;
+}
+
+.highlightedArea {
+	border: 2px solid red;
+}
 #grid1 {
 	background-color: $grid1;
 }
