@@ -4,9 +4,10 @@ let $ = require('jquery');
 
 let textInput = document.getElementById('text-input');
 let searchForm = document.getElementById('search-form');
-// let moment = require('moment');
-// moment().format();
-// $('#time').bootstrapMaterialDatePicker({ date: false });
+var Handlebars     = require('handlebars');
+var HandlebarsIntl = require('handlebars-intl');
+HandlebarsIntl.registerWith(Handlebars);
+
 let app = Object.create(null);
 let data = require('./data-factory');
 let getArray = require('./arrayBuilder');
@@ -24,8 +25,10 @@ getArray.attractionsList().then(function(dataFromGetAttractionsList){
     $('#attractionList').append(templates.testTemplate({list : attractionsList}));
 		userInteraction.nameClick();
 });
+
 domLoader.areaList();
 domLoader.parkInfo();
+
 
 app.listGetter = function(){
     return attractionsList;
