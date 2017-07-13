@@ -29,6 +29,7 @@ ul {
 	position: absolute;
 	z-index: 1;
 	pointer-events: none;
+	opacity: .5;
 }
 
 .mapGrid {
@@ -37,13 +38,14 @@ ul {
 }
 
 .mapGridBox {
-	border: 2px solid transparent;
 	height: 200px;
 	// width: 250px;
+	border: 5px solid transparent;
+	color: white;
 }
 
 .highlightedArea {
-	border: 2px solid red;
+	border: 5px inset lightgrey;
 }
 #grid1 {
 	background-color: $grid1;

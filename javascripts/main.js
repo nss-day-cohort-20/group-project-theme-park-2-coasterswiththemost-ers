@@ -16,6 +16,7 @@ let getParkInfo = require('./arrayBuilder');
 let userInteraction = require('./userInteractionDOM');
 let templates = require('./templates');
 let domLoader = require('./loadDOM');
+let moment = require('moment');
 
 //this is needed for search function TODO - move it to appropriate module.
 let attractionsList = [];
@@ -41,6 +42,15 @@ searchForm.addEventListener('submit', function(){
     })
     .then(function(dataFromGetAreas){
         let areas = dataFromGetAreas;
+
+        function highlightMapGridBoxes(attraction) {
+            let currentArea = areas.filter(function(area){
+                return attraction.area === area.name;
+            })[0];
+            let divIDselector = '#' + 'grid' + currentArea.id;
+            $(divIDselector).addClass('highlightedArea');
+        }
+
         // console.log("attractionsList", attractionsList, "areas", areas);
         let searchedAttractions = attractionsList.filter(function(attraction){
 	          // console.log(attraction);
@@ -48,26 +58,51 @@ searchForm.addEventListener('submit', function(){
 	              if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
 	                  return false;
 	              } else {
-	                  let currentArea = areas.filter(function(area){
-	                      return attraction.area === area.name;
-	                  })[0];
-	                  let divIDselector = '#' + 'grid' + currentArea.id;
-	                  $(divIDselector).addClass('highlightedArea');
+	                  // highlightMapGridBoxes(attraction);
 	                  return true;
 	              }
 	          }
 	          return stringContains();
 	      });
             let userInputTime = document.getElementById('time').value;
-            // let filteredList =  attractionList.filter( function(list)
-            // {
-            //     // if(userInputTime === list.times.)
-            // });
-		    // console.log('searchedAttractions', searchedAttractions);
-		    //below empties sidebar and fills with only matching attractions with the matched name
-		    $('#attractionList').empty();
-		    $('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
-				userInteraction.nameClick();
+            if(!userInputTime)
+            {
+                // console.log('empty');
+                $('.mapGridBox').removeClass('highlightedArea');
+                searchedAttractions.forEach(function(attraction){
+                    highlightMapGridBoxes(attraction);
+                });
+
+                $('#attractionList').empty();
+                $('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
+                userInteraction.nameClick();
+            }
+            else
+            {
+                userInputTime = moment(userInputTime, ["h:mm"]).format("h:mmA");
+                // console.log("userInputTime",userInputTime);
+                // console.log('searchedAttractions', searchedAttractions);
+                let timeFilteredAttractions = searchedAttractions.filter( function(attractionObj)
+                {
+                    if(attractionObj.times === undefined)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return attractionObj.times.includes(userInputTime);
+                    }
+                });
+                $('.mapGridBox').removeClass('highlightedArea');
+                timeFilteredAttractions.forEach(function(attraction){
+                    highlightMapGridBoxes(attraction);
+                });
+
+                $('#attractionList').empty();
+                $('#attractionList').append(templates.testTemplate({list : timeFilteredAttractions}));
+                userInteraction.nameClick();
+
+            }
   })
   .catch(function(err){
       console.log('Oops, there was an error', err.statusText);
@@ -88,7 +123,6 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
         userInteraction.nameClick();
     });
 });
-
 
 function draw() {
 var canvas = document.getElementById('canvas');

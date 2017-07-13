@@ -21,18 +21,20 @@ ul {
   height: 100%;
   position: absolute;
   z-index: 1;
-  pointer-events: none; }
+  pointer-events: none;
+  opacity: .5; }
 
 .mapGrid {
   position: relative;
   z-index: 0; }
 
 .mapGridBox {
-  border: 2px solid transparent;
-  height: 200px; }
+  height: 200px;
+  border: 5px solid transparent;
+  color: white; }
 
 .highlightedArea {
-  border: 2px solid red; }
+  border: 5px inset lightgrey; }
 
 #grid1 {
   background-color: #730217; }
