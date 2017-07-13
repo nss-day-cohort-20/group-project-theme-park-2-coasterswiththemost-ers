@@ -29,7 +29,10 @@ getArray.areas().then(function(dataFromGetAreaList) {
 
 domLoader.parkInfo = function() {
 getArray.parkInfo().then(function(dataFromGetParkInfo) {
-    $('#footerDiv').prepend( templates.parkInfo(dataFromGetParkInfo[0]) );
+    var today = new Date();
+    var year = today.getFullYear();
+    dataFromGetParkInfo[0].year = year;
+    $('#mainFooter').prepend( templates.parkInfo(dataFromGetParkInfo[0]) );
 });
 };
 
