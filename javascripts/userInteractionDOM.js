@@ -8,14 +8,20 @@ userInteraction.nameClick = function()
 {
 	$('#attractionList li').on('click', function()
 	{
-	$('#attractionList li div').each( function()
+	let currentDiv = this.lastElementChild;
+	if(currentDiv.classList.contains('isHidden') === false)
 	{
-		this.classList.add('isHidden');
-	});
-	let childCount = document.getElementById('attractionList').childElementCount;
-
-	console.log(this);
-	this.lastElementChild.classList.toggle('isHidden');
+		currentDiv.classList.add('isHidden');
+	}
+	else
+	{
+		$('#attractionList li div').each( function()
+		{
+			this.classList.add('isHidden');
+		});
+		console.log('does not have isHidden');
+		currentDiv.classList.remove('isHidden');
+	}
 	});
 };
 

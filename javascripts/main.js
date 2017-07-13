@@ -1,16 +1,17 @@
 'use strict';
 
+let $ = require('jquery');
 let attractions = [];
 let areas = [];
 let attractionTypes = [];
 let attractionsList = [];
 let parkInfo = [];
-
 let textInput = document.getElementById('text-input');
 let searchForm = document.getElementById('search-form');
-
+// let moment = require('moment');
+// moment().format();
+// $('#time').bootstrapMaterialDatePicker({ date: false });
 let app = Object.create(null);
-let $ = require('jquery');
 let data = require('./data-factory');
 let userInteraction = require('./userInteractionDOM');
 let getArray = require('./arrayBuilder');
