@@ -1,6 +1,6 @@
 'use strict';
 
-// let $ = require('jquery');
+let $ = require('jquery');
 
 let userInteraction = {};
 // let attractionListData = require('./attractions-list-data-builder');
