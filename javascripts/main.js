@@ -1,11 +1,13 @@
 'use strict';
 
+let $ = require('jquery');
 
 let textInput = document.getElementById('text-input');
 let searchForm = document.getElementById('search-form');
-
+// let moment = require('moment');
+// moment().format();
+// $('#time').bootstrapMaterialDatePicker({ date: false });
 let app = Object.create(null);
-let $ = require('jquery');
 let data = require('./data-factory');
 let getArray = require('./arrayBuilder');
 let getAreaList = require('./arrayBuilder');
