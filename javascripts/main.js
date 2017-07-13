@@ -1,6 +1,6 @@
 'use strict';
 
-let $ = require('jquery');
+// let $ = require('jquery');
 let attractions = [];
 let areas = [];
 let attractionTypes = [];
@@ -8,9 +8,10 @@ let attractionsList = [];
 let parkInfo = [];
 let textInput = document.getElementById('text-input');
 let searchForm = document.getElementById('search-form');
-// let moment = require('moment');
-// moment().format();
-// $('#time').bootstrapMaterialDatePicker({ date: false });
+var Handlebars     = require('handlebars');
+var HandlebarsIntl = require('handlebars-intl');
+HandlebarsIntl.registerWith(Handlebars);
+
 let app = Object.create(null);
 let data = require('./data-factory');
 let userInteraction = require('./userInteractionDOM');
@@ -36,8 +37,13 @@ getArray.areas().then(function(dataFromGetAreaList) {
 });
 
 getArray.parkInfo().then(function(dataFromGetParkInfo) {
+    var today = new Date();
+    var year = today.getFullYear();
     parkInfo = dataFromGetParkInfo;
-    $('#footerDiv').prepend( templates.parkInfo(parkInfo[0]) );
+    parkInfo[0].year = year;
+    console.log(year);
+    $('#mainFooter').prepend( templates.parkInfo(parkInfo[0]) );
+    // $('#mainFooter').append( templates.footer(year));
 });
 
 
@@ -69,6 +75,8 @@ searchForm.addEventListener('submit', function(){
             }
             return stringContains();
         });
+        let x = document.getElementById('time').value;
+        console.log(x);
         // console.log('searchedAttractions', searchedAttractions);
         //below empties sidebar and fills with only matching attractions with the matched name
         $('#attractionList').empty();

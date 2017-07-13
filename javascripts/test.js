@@ -1,5 +1,5 @@
 'use strict';
 
-let $ = require('jquery');
+// let $ = require('jquery');
 
-$('.clockpicker').clockpicker();
+// $('.clockpicker').clockpicker();
