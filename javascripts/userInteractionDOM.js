@@ -19,7 +19,7 @@ userInteraction.nameClick = function()
 		{
 			this.classList.add('isHidden');
 		});
-		console.log('does not have isHidden');
+		// console.log('does not have isHidden');
 		currentDiv.classList.remove('isHidden');
 	}
 	});

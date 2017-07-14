@@ -1,9 +1,40 @@
 @import 'variables';
 
+body {
+	background-color: white;
+	font-family: 'Kaushan Script', cursive;
+}
 nav img {
-	max-height: 50px;
+	// max-height: 30%;
+	width:300px;
+	height: 120px;
+}
+#typeSearchCheckbox
+{
+	width:2vh;
 }
 
+.flexform
+{
+	margin-top: 5vh;
+	// font-size: 1.2em;
+}
+.navbarBig
+{
+	font-size: 1.25em;
+  height: 20vh;
+  background-color: #ECEF9C;
+}
+
+.subNavBig
+{
+	height: 100%;
+}
+
+#text-input
+{
+	width: 40vh;
+}
 .container-fluid {
 	border: 1px solid lightgrey;
 }
@@ -12,12 +43,27 @@ nav img {
 	display: none;
 }
 
+#time
+{
+	width: 15vh;
+	// margin-left: 20px;
+}
+
+#searchBtn
+{
+	background-color: #392ECF;
+	margin-left: 10px;
+	width: 15vh;
+	color: white;
+}
 ul {
 	list-style-type: decimal;
 }
 
-#mapDiv {
-		min-height: 50vh;
+#mapDiv 
+{
+	font-size: 1.5em;
+	min-height: 50vh;
 }
 
 .mapContainer {
@@ -38,13 +84,22 @@ ul {
 	z-index: 0;
 }
 
+#grid{
+	pointer-events: none;
+}
 .mapGridBox {
 	height: 200px;
 	width: 250px;
 	border: 5px solid transparent;
 	color: white;
+	display: inline-flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
 }
-
+.footerFlexContainer
+{
+	text-align: center;
+}
 .highlightedArea {
 	border: 5px inset lightgrey;
 }
