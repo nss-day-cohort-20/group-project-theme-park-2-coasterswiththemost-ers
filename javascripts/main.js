@@ -96,7 +96,7 @@ searchForm.addEventListener('submit', function(){
                             let attractionTimeMoment = moment(time, ["h:mmA"]);
                             // console.log('attractionTimeMoment', attractionTimeMoment);
                             let timeDiff = attractionTimeMoment.diff(userInputMoment, 'minutes');
-                            console.log('timeDiff', timeDiff, typeof(timeDiff));
+                            // console.log('timeDiff', timeDiff, typeof(timeDiff));
                             if (timeDiff >= 0 && timeDiff <= 60) {
                                 return true;
                             } else {
