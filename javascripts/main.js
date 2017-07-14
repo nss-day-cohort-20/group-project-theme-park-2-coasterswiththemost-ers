@@ -55,7 +55,9 @@ searchForm.addEventListener('submit', function(){
         let searchedAttractions = attractionsList.filter(function(attraction){
 	          // console.log(attraction);
 	          function stringContains(){
-	              if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
+                  let textInputRegExp = new RegExp(`${textInput.value}`, 'i');
+                  // if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
+	              if (attraction.name.search(textInputRegExp) === -1) {
 	                  return false;
 	              } else {
 	                  // highlightMapGridBoxes(attraction);
