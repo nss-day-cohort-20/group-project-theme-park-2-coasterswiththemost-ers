@@ -80,6 +80,8 @@ searchForm.addEventListener('submit', function(){
             else
             {
                 userInputTime = moment(userInputTime, ["h:mm"]).format("h:mmA");
+                let userInputMoment = moment(userInputTime, ["h:mmA"]);
+                // console.log('userInputMoment', userInputMoment);
                 // console.log("userInputTime",userInputTime);
                 // console.log('searchedAttractions', searchedAttractions);
                 let timeFilteredAttractions = searchedAttractions.filter( function(attractionObj)
@@ -90,7 +92,20 @@ searchForm.addEventListener('submit', function(){
                     }
                     else
                     {
-                        return attractionObj.times.includes(userInputTime);
+                        let booleanTimesArray = attractionObj.times.map(function(time){
+                            let attractionTimeMoment = moment(time, ["h:mmA"]);
+                            // console.log('attractionTimeMoment', attractionTimeMoment);
+                            let timeDiff = attractionTimeMoment.diff(userInputMoment, 'minutes');
+                            console.log('timeDiff', timeDiff, typeof(timeDiff));
+                            if (timeDiff >= 0 && timeDiff <= 60) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        });
+                        // return attractionObj.times.includes(userInputTime);
+                        // console.log('booleanTimesArray includes true', booleanTimesArray.includes(true));
+                        return booleanTimesArray.includes(true);
                     }
                 });
                 $('.mapGridBox').removeClass('highlightedArea');
