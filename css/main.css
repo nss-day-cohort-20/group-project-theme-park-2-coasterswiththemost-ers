@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 body {
   background-color: white;
   font-family: 'Kaushan Script', cursive; }
 
+=======
+>>>>>>> master
 nav img {
   width: 300px;
   height: 120px; }
@@ -89,5 +92,24 @@ ul {
 
 .footerFlexDesc {
   flex-grow: 1; }
+
+body {
+  max-height: 120vh; }
+
+nav {
+  max-height: 20vh; }
+
+body > .container-fluid {
+  max-height: 80vh; }
+
+.container-fluid .row {
+  height: inherit; }
+
+#listDiv {
+  height: 80vh;
+  overflow: scroll; }
+
+footer {
+  max-height: 20vh; }
 
 /*# sourceMappingURL=main.css.map */

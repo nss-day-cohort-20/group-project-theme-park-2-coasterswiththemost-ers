@@ -45,6 +45,7 @@ nav img {
 ul {
 	list-style-type: decimal;
 }
+
 #mapDiv {
 		min-height: 50vh;
 }
@@ -116,3 +117,29 @@ ul {
 .footerFlexDesc {
 	flex-grow: 1;
 }
+
+//HERE is overflow styling
+body {
+	max-height: $body-height;
+}
+nav {
+	max-height: $nav-height;
+}
+
+body > .container-fluid {
+	max-height: $page-content-height;
+}
+
+.container-fluid .row {
+	height: inherit;
+}
+
+#listDiv {
+	height: $page-content-height;
+	overflow: scroll;
+}
+
+footer {
+	max-height: $footer-height;
+}
+//END of overflow styling
