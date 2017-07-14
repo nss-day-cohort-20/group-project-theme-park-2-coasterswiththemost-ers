@@ -6,6 +6,7 @@ let userInteraction = {};
 // let attractionListData = require('./attractions-list-data-builder');
 userInteraction.nameClick = function()
 {
+	event.preventDefault();
 	$('#attractionList li').on('click', function()
 	{
 	let currentDiv = this.lastElementChild;
@@ -21,6 +22,7 @@ userInteraction.nameClick = function()
 		});
 		console.log('does not have isHidden');
 		currentDiv.classList.remove('isHidden');
+		currentDiv.scrollIntoView();
 	}
 	});
 };
