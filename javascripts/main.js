@@ -127,8 +127,9 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
 function draw() {
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-  context.font = '48px, sans-serif';
-  context.fillText('1', 10, 50, 10, 10);
+  context.font = '10px, sans-serif';
+  context.fillStyle = '#ffffff';
+  context.fillText('1', 50, 10);
 }
 
 draw();

@@ -21,8 +21,7 @@ ul {
   height: 100%;
   position: absolute;
   z-index: 1;
-  pointer-events: none;
-  opacity: .5; }
+  pointer-events: none; }
 
 .mapGrid {
   position: relative;
