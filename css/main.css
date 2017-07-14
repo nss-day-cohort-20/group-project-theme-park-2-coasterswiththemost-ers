@@ -1,42 +1,75 @@
-/*
-Error: Invalid CSS after "...ort 'variables'": expected "{", was ";"
-        on line 242 of ../sass/main.scss
+body {
+  background-color: lightgrey;
+  font-family: 'Kaushan Script', cursive; }
 
-237: // }
-238: // .footerFlexDesc {
-239: // 	flex-grow: 1;
-240: // }
-241: 
-242: @import 'variables';
-243: body {
-244:     background-color: lightgrey;
-245: }
-246: nav img {
-247:     max-height: 50px;
+nav img {
+  max-height: 50px; }
 
-Backtrace:
-../sass/main.scss:242
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:1207:in `expected'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:1137:in `expected'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:1132:in `tok!'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:665:in `block'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:658:in `ruleset'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:684:in `block_child'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:674:in `block_contents'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:125:in `stylesheet'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:41:in `parse'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/engine.rb:406:in `_to_tree'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/engine.rb:298:in `render_with_sourcemap'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:391:in `run'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:63:in `process_result'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/base.rb:52:in `parse'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/base.rb:19:in `parse!'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.4.24/bin/sass:13:in `<top (required)>'
-C:/Ruby24-x64/bin/sass:22:in `load'
-C:/Ruby24-x64/bin/sass:22:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"...ort 'variables'\": expected \"{\", was \";\"\A         on line 242 of ../sass/main.scss\A \A 237: // }\A 238: // .footerFlexDesc {\A 239: // 	flex-grow: 1;\A 240: // }\A 241: \A 242: @import 'variables';\A 243: body {\A 244:     background-color: lightgrey;\A 245: }\A 246: nav img {\A 247:     max-height: 50px;"; }
+.container-fluid {
+  border: 1px solid lightgrey; }
+
+.isHidden {
+  display: none; }
+
+ul {
+  list-style-type: decimal; }
+
+#mapDiv {
+  min-height: 50vh; }
+
+.mapContainer {
+  min-height: 100%; }
+
+canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  pointer-events: none; }
+
+.mapGrid {
+  position: relative;
+  z-index: 0; }
+
+.mapGridBox {
+  height: 200px;
+  width: 250px;
+  border: 5px solid transparent;
+  color: white; }
+
+.highlightedArea {
+  border: 5px inset lightgrey; }
+
+#grid1 {
+  background-color: #730217; }
+
+#grid2 {
+  background-color: #D15530; }
+
+#grid3 {
+  background-color: #A37849; }
+
+#grid4 {
+  background-color: #2594D9; }
+
+#grid5 {
+  background-color: #E73C81; }
+
+#grid6 {
+  background-color: #3E4D8C; }
+
+#grid7 {
+  background-color: #F2CF53; }
+
+.footerFlexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.footerFlexContainer div {
+  min-width: 200px; }
+
+.footerFlexDesc {
+  flex-grow: 1; }
+
+/*# sourceMappingURL=main.css.map */

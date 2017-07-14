@@ -1,6 +1,4 @@
-
-<<<<<<< HEAD
-// @import 'variables';
+// / @import 'variables';
 
 // body
 // {
@@ -242,16 +240,10 @@
 @import 'variables';
 body {
     background-color: lightgrey;
+    font-family: 'Kaushan Script', cursive;
 }
 nav img {
     max-height: 50px;
-=======
-body {
-	background-color: lightgrey;
-}
-nav img {
-	max-height: 50px;
->>>>>>> master
 }
 .container-fluid {
     border: 1px solid lightgrey;
@@ -268,7 +260,6 @@ ul {
 .mapContainer {
     min-height: 100%;
 }
-<<<<<<< HEAD
 canvas {
     width:100%;
     height:100%;
@@ -276,33 +267,16 @@ canvas {
     z-index: 1;
     pointer-events: none;
     // opacity: .5;
-=======
-
-#canvas {
-	width:100%;
-	height:100%;
-	position: absolute;
-	z-index: 1;
-	pointer-events: none;
-	// opacity: .5;
->>>>>>> master
 }
 .mapGrid {
     position: relative;
     z-index: 0;
 }
 .mapGridBox {
-<<<<<<< HEAD
-    height: 200px;
-    width: 250px;
-    border: 5px solid transparent;
-    color: white;
-=======
 	height: 200px;
 	width: 250px;
 	border: 5px solid transparent;
 	color: white;
->>>>>>> master
 }
 .highlightedArea {
     border: 5px inset lightgrey;
@@ -326,7 +300,6 @@ canvas {
     background-color: $grid6;
 }
 #grid7 {
-<<<<<<< HEAD
     background-color: $grid7;
 }
 .footerFlexContainer {
@@ -339,19 +312,4 @@ canvas {
 }
 .footerFlexDesc {
     flex-grow: 1;
-=======
-	background-color: $grid7;
-}
-
-.footerFlexContainer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.footerFlexContainer div {
-	min-width: 200px;
-}
-.footerFlexDesc {
-	flex-grow: 1;
->>>>>>> master
 }
