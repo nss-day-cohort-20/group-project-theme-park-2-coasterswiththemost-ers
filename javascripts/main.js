@@ -3,6 +3,7 @@
 let $ = require('jquery');
 
 let textInput = document.getElementById('text-input');
+let typeCheckbox = document.getElementById('typeSearchCheckbox');
 let searchForm = document.getElementById('search-form');
 var Handlebars     = require('handlebars');
 var HandlebarsIntl = require('handlebars-intl');
@@ -35,14 +36,34 @@ app.listGetter = function(){
     return attractionsList;
 };
 
+//draws a number on the canvas mapGrid overlay based on coordinates
+//called in search function after filter and drawing list to dom
+function draw(attractions) {
+	var canvas = document.getElementById('canvas');
+	var context = canvas.getContext('2d');
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	let counter = 1;
+	attractions.forEach( function(attraction) {
+	  context.font = '8px, sans-serif';
+	  context.fillStyle = '#ffffff';
+	  context.fillText(`${counter}`, `${attraction.positionX}`, `${attraction.positionY}`);
+	  counter += 1;
+		});
+}
+
 searchForm.addEventListener('submit', function(){
     getArray.attractionsList().then( function(dataFromGetAttractionsList) {
         let attractionsList = dataFromGetAttractionsList;
+        return getArray.types();
+    })
+    .then(function(datafromGetTypes){
+        // console.log('datafromGetTypes', datafromGetTypes);
+        let types = datafromGetTypes;
         return getArray.areas();
     })
     .then(function(dataFromGetAreas){
         let areas = dataFromGetAreas;
-
+        // console.log(attractionsList, types, areas);
         function highlightMapGridBoxes(attraction) {
             let currentArea = areas.filter(function(area){
                 return attraction.area === area.name;
@@ -55,12 +76,23 @@ searchForm.addEventListener('submit', function(){
         let searchedAttractions = attractionsList.filter(function(attraction){
 	          // console.log(attraction);
 	          function stringContains(){
-	              if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
-	                  return false;
-	              } else {
-	                  // highlightMapGridBoxes(attraction);
-	                  return true;
-	              }
+                  let textInputRegExp = new RegExp(`${textInput.value}`, 'i');
+                  // console.log(typeCheckbox.checked);
+                  // if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
+	              if (typeCheckbox.checked === true) {
+                      if (attraction.type.search(textInputRegExp) === -1) {
+                          return false;
+                      } else {
+                          return true;
+                      }
+                  } else {
+                      if (attraction.name.search(textInputRegExp) === -1) {
+                          return false;
+                      } else {
+                          // highlightMapGridBoxes(attraction);
+                          return true;
+                      }
+                  }
 	          }
 	          return stringContains();
 	      });
@@ -75,11 +107,14 @@ searchForm.addEventListener('submit', function(){
 
                 $('#attractionList').empty();
                 $('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
+                draw(searchedAttractions);
                 userInteraction.nameClick();
             }
             else
             {
                 userInputTime = moment(userInputTime, ["h:mm"]).format("h:mmA");
+                let userInputMoment = moment(userInputTime, ["h:mmA"]);
+                // console.log('userInputMoment', userInputMoment);
                 // console.log("userInputTime",userInputTime);
                 // console.log('searchedAttractions', searchedAttractions);
                 let timeFilteredAttractions = searchedAttractions.filter( function(attractionObj)
@@ -90,7 +125,20 @@ searchForm.addEventListener('submit', function(){
                     }
                     else
                     {
-                        return attractionObj.times.includes(userInputTime);
+                        let booleanTimesArray = attractionObj.times.map(function(time){
+                            let attractionTimeMoment = moment(time, ["h:mmA"]);
+                            // console.log('attractionTimeMoment', attractionTimeMoment);
+                            let timeDiff = attractionTimeMoment.diff(userInputMoment, 'minutes');
+                            // console.log('timeDiff', timeDiff, typeof(timeDiff));
+                            if (timeDiff >= 0 && timeDiff <= 60) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        });
+                        // return attractionObj.times.includes(userInputTime);
+                        // console.log('booleanTimesArray includes true', booleanTimesArray.includes(true));
+                        return booleanTimesArray.includes(true);
                     }
                 });
                 $('.mapGridBox').removeClass('highlightedArea');
@@ -100,12 +148,13 @@ searchForm.addEventListener('submit', function(){
 
                 $('#attractionList').empty();
                 $('#attractionList').append(templates.testTemplate({list : timeFilteredAttractions}));
+                draw(timeFilteredAttractions);
                 userInteraction.nameClick();
 
             }
   })
   .catch(function(err){
-      console.log('Oops, there was an error', err.statusText);
+      console.log('Oops, there was an error', err);
   });
 });
 
@@ -120,18 +169,14 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
         });
         $('#attractionList').empty();
         $('#attractionList').append(templates.testTemplate({list : areaAttractions}));
+        draw(areaAttractions);
         userInteraction.nameClick();
     });
 });
 
-function draw() {
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-  context.font = '48px, sans-serif';
-  context.fillText('1', 10, 50, 10, 10);
-}
 
-draw();
+
+// draw();
 
 //this should clear the canvas when needed:
 //perhaps clear when user clicks the canvas - indicates they want to select area

@@ -1,8 +1,14 @@
-<h3>{{name}}</h3>
-<a href="#about" id="about">About us</a>
-<p class = "isHidden" id="aboutDescription">{{description}}</p>
-<p>{{location}}</p>
-{{#each operating_hours}}
-<p>Operating hours: {{this.opening}} - {{this.closing}}</p>
-{{/each }}
-<p class="col-sm-4">&copy; {{year}} Coasters with the Most-ers, LLC</p>
+<div class="footerFlexName">
+	<h3>{{name}}</h3>
+	{{#each operating_hours}}
+	<p>Operating hours: {{this.opening}} - {{this.closing}}</p>
+	{{/each }}
+</div>
+<div class="footerFlexDesc">
+	<a href="#about" id="about">About us</a>
+	<p class = "isHidden" id="aboutDescription">{{description}}</p>
+</div>
+<div class="footerFlexLocation">
+	<h4>&copy; {{year}} Most-ers, LLC</h4>
+	<p>{{location}}</p>
+</div>
