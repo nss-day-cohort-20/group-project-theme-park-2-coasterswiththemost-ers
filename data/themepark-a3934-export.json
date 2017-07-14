@@ -390,8 +390,6 @@
     "description" : "Take off on a scenic half-mile adventure into the wilds of old America aboard a steam-powered paddler wheeler. Board the Colonial-American-inspired, 3-tiered Liberty Belle riverboat nestled in the heart of Liberty Square and embark on a relaxing journey around Tom Sawyer Island along the Rivers of America. ",
     "id" : 41,
     "name" : "Liberty Square Riverboat",
-    "positionX" : 20,
-    "positionY" : 10,
     "type_id" : 1
   }, {
     "area_id" : 3,
@@ -406,8 +404,6 @@
     "description" : "Edge into a shadowy foyer and climb aboard a gloomy Doom Buggy for a supernatural journey through a labyrinth of haunted chambers. Glide past a casket-filled conservatory, a chilling séance room and a ghostly graveyard of singing specters as you attempt to find your way out. ",
     "id" : 43,
     "name" : "The Haunted Mansion",
-    "positionX" : 40,
-    "positionY" : 10,
     "type_id" : 1
   }, {
     "area_id" : 3,
@@ -438,32 +434,24 @@
     "description" : "Pay tribute to our founding fathers as you dine at this stately colonial-style inn serving traditional New England-inspired fare.",
     "id" : 47,
     "name" : "Liberty Tree Tavern",
-    "positionX" : 60,
-    "positionY" : 10,
     "type_id" : 2
   }, {
     "area_id" : 4,
     "description" : "Fill the hollow in your belly with a tasty treat at this quaint brick cottage by Cinderella Castle. Choose between sweet waffle sandwiches or funnel cakes topped with strawberries and whipped cream.",
     "id" : 48,
     "name" : "Sleepy Hollow Refreshments",
-    "positionX" : 80,
-    "positionY" : 10,
     "type_id" : 2
   }, {
     "area_id" : 4,
     "description" : "Let freedom ring before or after your Hall of Presidents experiences at Liberty Square Market, where you can sink your teeth—whether wooden or pearly white—into chips, healthy snacks or a hot dog before wetting your whistle with a variety of beverages",
     "id" : 49,
     "name" : "Liberty Square Market",
-    "positionX" : 40,
-    "positionY" : 10,
     "type_id" : 2
   }, {
     "area_id" : 4,
     "description" : "Reel in fried fish, shrimp or chicken baskets, lobster rolls, New England clam chowder, grilled salmon, vegetarian chili and salads. Specialty sandwiches include the Anchors Aweigh, made with white tuna, and the Lighthouse, made with hummus and broccoli slaw. Kids can enjoy macaroni and cheese, chicken nuggets and more. Top off your meal with seasonal cobbler, yogurt and fountain drinks.",
     "id" : 50,
     "name" : "Colombia Harbor House",
-    "positionX" : 60,
-    "positionY" : 10,
     "type_id" : 2
   }, {
     "area_id" : 3,
@@ -478,8 +466,6 @@
     "description" : "Enter the pristine Hall of Presidents in the heart of Liberty Square—modeled after Independence Hall in Philadelphia—and make your way beneath an awe-inspiring grand rotunda. Peruse an authentic artifact collection nearby featuring such treasures as George Washington’s dental instruments and Abraham Lincoln’s leather portfolio.",
     "id" : 52,
     "name" : "The Hall of Presidents",
-    "positionX" : 20,
-    "positionY" : 10,
     "type_id" : 3
   }, {
     "area_id" : 3,
@@ -526,40 +512,30 @@
     "description" : "Feel free to celebrate Christmas any day at this Liberty Square shop selling Disney ornaments, stockings, toys and more. ",
     "id" : 58,
     "name" : "Ye Olde Christmas Shoppe",
-    "positionX" : 40,
-    "positionY" : 10,
     "type_id" : 4
   }, {
     "area_id" : 4,
     "description" : "Camera & Media",
     "id" : 59,
     "name" : "Liberty Square Portrait Gallery",
-    "positionX" : 80,
-    "positionY" : 60,
     "type_id" : 4
   }, {
     "area_id" : 4,
     "description" : "Apparel & Accessories",
     "id" : 60,
     "name" : "Liberty Square Parasol Cart",
-    "positionX" : 20,
-    "positionY" : 10,
     "type_id" : 4
   }, {
     "area_id" : 4,
     "description" : "Follow the voices in the breeze to the former abode of Madame Leota! Inside, you may find your fortune or possibly the perfect Haunted Mansion memento—those so lucky could even hear her humming a tune or see her visage appear… from time to time. ",
     "id" : 61,
     "name" : "Momento Mori",
-    "positionX" : 40,
-    "positionY" : 10,
     "type_id" : 4
   }, {
     "area_id" : 4,
     "description" : "Gather ‘round outside The Hall of Presidents as Kermit the Frog, Miss Piggy, Fozzie Bear, The Great Gonzo and James Jefferson, town crier of Liberty Square, bring America’s most hallowed stories to life as only they can—with an original song and plenty of Muppet mayhem thrown in.",
     "id" : 62,
     "name" : "The Muppets Present... Great Moments in American History",
-    "positionX" : 60,
-    "positionY" : 10,
     "times" : [ "9:30AM", "10:20AM", "10:55AM", "11:30AM", "12:00PM", "1:25PM", "2:00PM", "4:15PM", "4:45PM" ],
     "type_id" : 5
   }, {
@@ -715,8 +691,6 @@
     "description" : "Forage for all things Pooh and friends at this popular shop next to The Many Adventures of Winnie the Pooh attraction. ",
     "id" : 84,
     "name" : "Hundred Acre Goods",
-    "positionX" : 20,
-    "positionY" : 10,
     "type_id" : 4
   }, {
     "area_id" : 5,

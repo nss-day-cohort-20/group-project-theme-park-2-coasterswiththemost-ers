@@ -43,7 +43,7 @@ function draw(attractions) {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	let counter = 1;
 	attractions.forEach( function(attraction) {
-	  context.font = '10px, sans-serif';
+	  context.font = '8px, sans-serif';
 	  context.fillStyle = '#ffffff';
 	  context.fillText(`${counter}`, `${attraction.positionX}`, `${attraction.positionY}`);
 	  counter += 1;
@@ -136,6 +136,7 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
         });
         $('#attractionList').empty();
         $('#attractionList').append(templates.testTemplate({list : areaAttractions}));
+        draw(areaAttractions);
         userInteraction.nameClick();
     });
 });
