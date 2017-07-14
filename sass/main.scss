@@ -77,3 +77,15 @@ ul {
 #grid7 {
 	background-color: $grid7;
 }
+
+.footerFlexContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.footerFlexContainer div {
+	min-width: 200px;
+}
+.footerFlexDesc {
+	flex-grow: 1;
+}

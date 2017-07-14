@@ -60,4 +60,15 @@ ul {
 #grid7 {
   background-color: #F2CF53; }
 
+.footerFlexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.footerFlexContainer div {
+  min-width: 200px; }
+
+.footerFlexDesc {
+  flex-grow: 1; }
+
 /*# sourceMappingURL=main.css.map */
