@@ -18,52 +18,41 @@ let userInteraction = require('./userInteractionDOM');
 let templates = require('./templates');
 let domLoader = require('./loadDOM');
 let moment = require('moment');
+let draw = require('./draw');
+let filterHandlers = require('./filterArray');
 
-//this is needed for search function TODO - move it to appropriate module.
-let attractionsList = [];
-// domLoader.attractionsList();
-getArray.attractionsList().then(function(dataFromGetAttractionsList){
-    attractionsList = dataFromGetAttractionsList;
-    $('#attractionList').append(templates.testTemplate({list : attractionsList}));
-		userInteraction.nameClick();
-});
+// puts initial full attraction list on page
+domLoader.attractionsList();
 
+// puts area grid on page
 domLoader.areaList();
 
+// puts park info footer on page
 domLoader.parkInfo();
 
-app.listGetter = function(){
-    return attractionsList;
-};
-
-//draws a number on the canvas mapGrid overlay based on coordinates
-//called in search function after filter and drawing list to dom
-function draw(attractions) {
-	var canvas = document.getElementById('canvas');
-	var context = canvas.getContext('2d');
-	context.clearRect(0, 0, canvas.width, canvas.height);
-	let counter = 1;
-	attractions.forEach( function(attraction) {
-	  context.font = '8px, sans-serif';
-	  context.fillStyle = '#ffffff';
-	  context.fillText(`${counter}`, `${attraction.positionX}`, `${attraction.positionY}`);
-	  counter += 1;
-		});
-}
+// app.listGetter = function(){
+//     return attractionsList;
+// };
 
 searchForm.addEventListener('submit', function(){
+    let attractionsList;
+    let types;
+    let areas;
     getArray.attractionsList().then( function(dataFromGetAttractionsList) {
-        let attractionsList = dataFromGetAttractionsList;
+        // console.log('dataFromGetAttractionsList', dataFromGetAttractionsList);
+        attractionsList = dataFromGetAttractionsList;
+        // console.log('attractionsList',attractionsList);
         return getArray.types();
     })
     .then(function(datafromGetTypes){
         // console.log('datafromGetTypes', datafromGetTypes);
-        let types = datafromGetTypes;
+
+        types = datafromGetTypes;
         return getArray.areas();
     })
     .then(function(dataFromGetAreas){
-        let areas = dataFromGetAreas;
-        // console.log(attractionsList, types, areas);
+        areas = dataFromGetAreas;
+        // console.log(types);
         function highlightMapGridBoxes(attraction) {
             let currentArea = areas.filter(function(area){
                 return attraction.area === area.name;
@@ -72,30 +61,11 @@ searchForm.addEventListener('submit', function(){
             $(divIDselector).addClass('highlightedArea');
         }
 
-        // console.log("attractionsList", attractionsList, "areas", areas);
-        let searchedAttractions = attractionsList.filter(function(attraction){
-	          // console.log(attraction);
-	          function stringContains(){
-                  let textInputRegExp = new RegExp(`${textInput.value}`, 'i');
-                  // console.log(typeCheckbox.checked);
-                  // if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
-	              if (typeCheckbox.checked === true) {
-                      if (attraction.type.search(textInputRegExp) === -1) {
-                          return false;
-                      } else {
-                          return true;
-                      }
-                  } else {
-                      if (attraction.name.search(textInputRegExp) === -1) {
-                          return false;
-                      } else {
-                          // highlightMapGridBoxes(attraction);
-                          return true;
-                      }
-                  }
-	          }
-	          return stringContains();
-	      });
+        // console.log("attractionsList", attractionsList);
+        let searchedAttractions = attractionsList.filter(function(attraction) {
+            // console.log("attraction", attraction);
+            return filterHandlers.search(attraction);
+        });
             let userInputTime = document.getElementById('time').value;
             if(!userInputTime)
             {
@@ -158,28 +128,8 @@ searchForm.addEventListener('submit', function(){
   });
 });
 
-$('#mapGrid').on('click', '.mapGridBox', function(){
-    $(this).siblings().removeClass('highlightedArea');
-    $(this).addClass('highlightedArea');
-    let spanContents = $(this).children('span').contents();
-    // spanContents[0].data is the name of the area clicked
-    getArray.attractionsList().then(function(dataFromGetAttractionsList){
-        let areaAttractions = dataFromGetAttractionsList.filter(function(attraction){
-            return attraction.area === spanContents[0].data;
-        });
-        $('#attractionList').empty();
-        $('#attractionList').append(templates.testTemplate({list : areaAttractions}));
-        draw(areaAttractions);
-        userInteraction.nameClick();
-    });
-});
+// jquery click handler highlight grid and upadate attraction list
+userInteraction.highlightGridBox();
 
-
-
-// draw();
-
-//this should clear the canvas when needed:
-//perhaps clear when user clicks the canvas - indicates they want to select area
-//context.clearRect(0, 0, canvas.width, canvas.height);
 
 window.app = app;
