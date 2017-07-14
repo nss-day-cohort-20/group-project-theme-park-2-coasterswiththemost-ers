@@ -1,8 +1,27 @@
 body {
-  background-color: lightgrey; }
+  background-color: white;
+  font-family: 'Kaushan Script', cursive; }
 
 nav img {
-  max-height: 50px; }
+  width: 300px;
+  height: 120px; }
+
+#typeSearchCheckbox {
+  width: 2vh; }
+
+.flexform {
+  margin-top: 5vh; }
+
+.navbarBig {
+  font-size: 1.25em;
+  height: 20vh;
+  background-color: #ECEF9C; }
+
+.subNavBig {
+  height: 100%; }
+
+#text-input {
+  width: 40vh; }
 
 .container-fluid {
   border: 1px solid lightgrey; }
