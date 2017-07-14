@@ -1,5 +1,8 @@
 @import 'variables';
 
+body {
+	background-color: lightgrey;
+}
 nav img {
 	max-height: 100%;
 }
@@ -39,7 +42,7 @@ ul {
 
 .mapGridBox {
 	height: 200px;
-	// width: 250px;
+	width: 250px;
 	border: 5px solid transparent;
 	color: white;
 }
