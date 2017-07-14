@@ -27,7 +27,9 @@ function buildAttractionsList () {
 			description: attraction.description,
 			area: areaItem.name,
 			type: typeItem.name,
-			times: attraction.times
+			times: attraction.times,
+			positionX: attraction.positionX,
+			positionY: attraction.positionY
 		};
 		return attractionObj;
 	});
