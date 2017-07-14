@@ -3,6 +3,7 @@
 let $ = require('jquery');
 
 let textInput = document.getElementById('text-input');
+let typeCheckbox = document.getElementById('typeSearchCheckbox');
 let searchForm = document.getElementById('search-form');
 var Handlebars     = require('handlebars');
 var HandlebarsIntl = require('handlebars-intl');
@@ -38,11 +39,16 @@ app.listGetter = function(){
 searchForm.addEventListener('submit', function(){
     getArray.attractionsList().then( function(dataFromGetAttractionsList) {
         let attractionsList = dataFromGetAttractionsList;
+        return getArray.types();
+    })
+    .then(function(datafromGetTypes){
+        // console.log('datafromGetTypes', datafromGetTypes);
+        let types = datafromGetTypes;
         return getArray.areas();
     })
     .then(function(dataFromGetAreas){
         let areas = dataFromGetAreas;
-
+        // console.log(attractionsList, types, areas);
         function highlightMapGridBoxes(attraction) {
             let currentArea = areas.filter(function(area){
                 return attraction.area === area.name;
@@ -56,13 +62,22 @@ searchForm.addEventListener('submit', function(){
 	          // console.log(attraction);
 	          function stringContains(){
                   let textInputRegExp = new RegExp(`${textInput.value}`, 'i');
+                  // console.log(typeCheckbox.checked);
                   // if (attraction.name.toLowerCase().search(textInput.value.toLowerCase()) === -1) {
-	              if (attraction.name.search(textInputRegExp) === -1) {
-	                  return false;
-	              } else {
-	                  // highlightMapGridBoxes(attraction);
-	                  return true;
-	              }
+	              if (typeCheckbox.checked === true) {
+                      if (attraction.type.search(textInputRegExp) === -1) {
+                          return false;
+                      } else {
+                          return true;
+                      }
+                  } else {
+                      if (attraction.name.search(textInputRegExp) === -1) {
+                          return false;
+                      } else {
+                          // highlightMapGridBoxes(attraction);
+                          return true;
+                      }
+                  }
 	          }
 	          return stringContains();
 	      });
@@ -122,7 +137,7 @@ searchForm.addEventListener('submit', function(){
             }
   })
   .catch(function(err){
-      console.log('Oops, there was an error', err.statusText);
+      console.log('Oops, there was an error', err);
   });
 });
 
