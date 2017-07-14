@@ -35,6 +35,21 @@ app.listGetter = function(){
     return attractionsList;
 };
 
+//draws a number on the canvas mapGrid overlay based on coordinates
+//called in search function after filter and drawing list to dom
+function draw(attractions) {
+	var canvas = document.getElementById('canvas');
+	var context = canvas.getContext('2d');
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	let counter = 1;
+	attractions.forEach( function(attraction) {
+	  context.font = '10px, sans-serif';
+	  context.fillStyle = '#ffffff';
+	  context.fillText(`${counter}`, `${attraction.positionX}`, `${attraction.positionY}`);
+	  counter += 1;
+		});
+}
+
 searchForm.addEventListener('submit', function(){
     getArray.attractionsList().then( function(dataFromGetAttractionsList) {
         let attractionsList = dataFromGetAttractionsList;
@@ -75,6 +90,7 @@ searchForm.addEventListener('submit', function(){
 
                 $('#attractionList').empty();
                 $('#attractionList').append(templates.testTemplate({list : searchedAttractions}));
+                draw(searchedAttractions);
                 userInteraction.nameClick();
             }
             else
@@ -124,15 +140,9 @@ $('#mapGrid').on('click', '.mapGridBox', function(){
     });
 });
 
-function draw() {
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-  context.font = '10px, sans-serif';
-  context.fillStyle = '#ffffff';
-  context.fillText('1', 50, 10);
-}
 
-draw();
+
+// draw();
 
 //this should clear the canvas when needed:
 //perhaps clear when user clicks the canvas - indicates they want to select area
