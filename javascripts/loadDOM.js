@@ -33,6 +33,12 @@ getArray.parkInfo().then(function(dataFromGetParkInfo) {
     var year = today.getFullYear();
     dataFromGetParkInfo[0].year = year;
     $('#mainFooter').append( templates.parkInfo(dataFromGetParkInfo[0]) );
+    $('#about').on('click', function()
+    {
+        // console.log('click');
+        $('#aboutDescription').toggleClass('isHidden');
+        // event.preventDefault();
+    });
 });
 };
 
