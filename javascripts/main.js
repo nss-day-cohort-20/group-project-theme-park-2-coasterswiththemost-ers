@@ -38,6 +38,7 @@ app.listGetter = function(){
 
 //draws a number on the canvas mapGrid overlay based on coordinates
 //called in search function after filter and drawing list to dom
+// 
 function draw(attractions) {
 	var canvas = document.getElementById('canvas');
 	var context = canvas.getContext('2d');
