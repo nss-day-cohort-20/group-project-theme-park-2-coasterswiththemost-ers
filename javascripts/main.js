@@ -133,6 +133,7 @@ searchForm.addEventListener('submit', function(){
 
                 $('#attractionList').empty();
                 $('#attractionList').append(templates.testTemplate({list : timeFilteredAttractions}));
+                draw(timeFilteredAttractions);
                 userInteraction.nameClick();
 
             }
