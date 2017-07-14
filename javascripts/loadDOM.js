@@ -32,7 +32,7 @@ getArray.parkInfo().then(function(dataFromGetParkInfo) {
     var today = new Date();
     var year = today.getFullYear();
     dataFromGetParkInfo[0].year = year;
-    $('#mainFooter').prepend( templates.parkInfo(dataFromGetParkInfo[0]) );
+    $('#mainFooter').append( templates.parkInfo(dataFromGetParkInfo[0]) );
 });
 };
 
