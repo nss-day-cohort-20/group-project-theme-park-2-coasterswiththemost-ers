@@ -24,6 +24,7 @@ nav img {
 	font-size: 1.25em;
   height: 20vh;
   background-color: #ECEF9C;
+  box-shadow: 1px 15px 20px -6px gray;
 }
 
 .subNavBig
@@ -34,9 +35,7 @@ nav img {
 #text-input
 {
 	width: 40vh;
-}
-.container-fluid {
-	border: 1px solid lightgrey;
+	box-shadow: 15px 15px 20px -6px gray;
 }
 
 .isHidden {
@@ -49,9 +48,24 @@ nav img {
 	// margin-left: 20px;
 }
 
+#listDiv
+{
+	 background-color: #FAA137;
+}
+
+#listDiv > h3
+{
+	text-align: center;
+	font-size: 2.5em;
+	background-color: #F4F70C;
+	border-radius: 10px;
+	width: 100%;
+	box-shadow: 1px 15px 20px -6px gray;
+
+}
 #searchBtn
 {
-	background-color: #392ECF;
+	background-color: #4ADB3B;
 	margin-left: 10px;
 	width: 15vh;
 	color: white;
@@ -162,9 +176,18 @@ body > .container-fluid {
 #listDiv {
 	height: $page-content-height;
 	overflow: scroll;
+	box-shadow: 1px 15px 20px -6px gray;
+	border-radius: 10px;
 }
 
 footer {
 	max-height: $footer-height;
+}
+
+#mainFooter
+{
+	 background-color: #ECEF9C;
+	box-shadow: 1px 15px 20px -6px gray;
+
 }
 //END of overflow styling
